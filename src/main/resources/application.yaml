@@ -3,7 +3,7 @@ spring:
     properties:
       schema.registry.url: https://psrc-l622j.us-east-2.aws.confluent.cloud
       basic.auth.credentials.source: USER_INFO
-      basic.auth.user.info:
+      basic.auth.user.info: Z4ONFXNI4ETUSI4O:Vw+QB2La1EMkpzI7ab5IinOyaQSczHhNuft8ju+kKtnEzPam/7+CNe87+nnTSxmD
   cloud:
     function:
       definition: user
@@ -15,7 +15,7 @@ spring:
           configuration:
             security.protocol: SASL_SSL
             sasl.mechanism: PLAIN
-            sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='{{ CLUSTER_KEY}}' password='{{CLUSTER_SECRET}}';
+            sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username='ZNEMY4QOFMXU6RQX' password='jrP9SFOH7rLOljgTRO3PHNG0RSIkVAmDJTvA/3PuNHQRb3m2/LgG0zfvpMS4+nU6';
             # Schema Registry settings
             # Avro serialization and deserialization configuration
             key.serializer: org.apache.kafka.common.serialization.StringSerializer
@@ -23,7 +23,9 @@ spring:
             key.deserializer: org.apache.kafka.common.serialization.StringDeserializer
             value.deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
             # Auto register schema if not already registered
-            auto.register.schemas: true
+            auto.register.schemas: false
+          consumer-properties:
+            specific.avro.reader: true
       bindings:
         user-in-0:
           destination: user-topic
